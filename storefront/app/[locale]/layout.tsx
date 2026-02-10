@@ -7,8 +7,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-	title: "store",
-	description: "store",
+	title: "Store | Himel Dot Studio",
+	description: "E-commerce de productos Himel Studio",
 };
 
 // Fonts

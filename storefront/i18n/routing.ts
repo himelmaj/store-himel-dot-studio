@@ -11,7 +11,7 @@ export const LOCALES_PREFIXES = {
 	"es-ES": "/es",
 } as const satisfies Record<Locale, string>;
 
-const LOCALE_COOKIE_CONFIG = {
+export const LOCALE_COOKIE_CONFIG = {
 	name: "NEXT_LOCALE",
 	maxAge: 60 * 60 * 24 * 7,
 	sameSite: "lax",
