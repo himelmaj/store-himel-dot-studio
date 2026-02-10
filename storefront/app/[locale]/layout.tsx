@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 
-// import { env } from "@store/env/server";
-
+import { env } from "@/lib/config/env";
 // SEO
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -22,6 +21,8 @@ import { routing } from "@/i18n/routing";
 import { fontsVariable } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
+import SiteMenu from "@/components/site-menu";
+
 export default async function AppLayout({
 	children,
 	params,
@@ -40,16 +41,20 @@ export default async function AppLayout({
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<body className={cn(fontsVariable, "bg-neutral-950 antialiased")}>
-				{/* {env.NODE_ENV === "development" && (
+				{env.NODE_ENV === "development" && (
 					<Script
 						id="react-scan"
 						crossOrigin="anonymous"
 						src="https://unpkg.com/react-scan/dist/auto.global.js"
 						strategy="afterInteractive"
 					/>
-				)} */}
+				)}
 				<NextIntlClientProvider>
-					<Providers>{children}</Providers>
+					<Providers>
+					<SiteMenu />
+
+						{children}
+						</Providers>
 				</NextIntlClientProvider>
 			</body>
 		</html>
