@@ -1,16 +1,25 @@
 "use client"
-
 import { X } from "lucide-react"
-import { SetStateAction, Dispatch } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import LocaleSwitcher from "./locale-switcher"
 import SiteNavegation from "./site-navegation"
 
+const StoreNavbar = ({ 
+  openMenu, 
+  setOpenMenu 
+}: { 
+  openMenu: boolean
+  setOpenMenu: (value: boolean | ((old: boolean) => boolean | null) | null) => Promise<URLSearchParams>
+}) => {
+  
+  const handleClose = () => {
+    setOpenMenu(false) // No necesitas await aquí
+  }
 
-const StoreNavbar = ({ openMenu, setOpenMenu }: { openMenu: boolean, setOpenMenu: Dispatch<SetStateAction<boolean>> }) => {
   return (
     <>
-      <motion.nav className="fixed inset-0 w-screen h-screen items-center justify-center bg-transparent z-90 flex flex-col "
+      <motion.nav 
+        className="fixed inset-0 w-screen h-screen items-center justify-center bg-transparent z-90 flex flex-col"
         variants={{
           closed: {
             y: "-100%",
@@ -35,31 +44,33 @@ const StoreNavbar = ({ openMenu, setOpenMenu }: { openMenu: boolean, setOpenMenu
         initial={"closed"}
         animate={openMenu ? "open" : "closed"}
       >
-
-
-        <div className="w-full h-full flex items-start justify-between">
+        <div className="w-full h-full flex flex-col md:flex-row items-start justify-between p-4 sm:p-6 md:p-0">
           <AnimatePresence>
             <SiteNavegation openMenu={openMenu} />
           </AnimatePresence>
-
-          <div className="py-5 px-15 flex flex-col items-start justify-start h-full">
-            <h2>
+          
+          <div className="w-full md:w-auto py-4 px-4 sm:py-5 sm:px-8 md:px-15 flex flex-col items-start justify-start h-auto md:h-full gap-4 sm:gap-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl">
               test
             </h2>
             <LocaleSwitcher />
+            
+            {openMenu && (
+              <motion.button 
+                className="flex items-center " 
+                onClick={handleClose}
+                // initial={{ opacity: 0, y: -10 }}
+                // animate={{ opacity: 1, y: 0 }}
+                // exit={{ opacity: 0, y: -10 }}
+                // transition={{ duration: 0.2 }}
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">Close</span>
+              </motion.button>
+            )}
           </div>
-
         </div>
-
-
       </motion.nav>
-
-      {/* {openMenu && (
-
-        <motion.button className=" inset-0 fixed z-110 " onClick={() => setOpenMenu(!openMenu)}>
-          <X />
-        </motion.button>
-      )} */}
     </>
   )
 }

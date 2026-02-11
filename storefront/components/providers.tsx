@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "./theme-provider";
 import { Toaster } from "./ui/sonner";
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
@@ -11,8 +12,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 			enableSystem
 			disableTransitionOnChange
 		>
-			{children}
-			<Toaster richColors />
+			<NuqsAdapter>
+				{children}
+				<Toaster richColors />
+			</NuqsAdapter>
 		</ThemeProvider>
 	);
 }

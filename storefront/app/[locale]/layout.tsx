@@ -40,7 +40,7 @@ export default async function AppLayout({
 
 	return (
 		<html lang={locale} suppressHydrationWarning>
-			<body className={cn(fontsVariable, "bg-neutral-950 antialiased")}>
+			<body className={cn(fontsVariable, "bg-neutral-950 antialiased font-sans")}>
 				{env.NODE_ENV === "development" && (
 					<Script
 						id="react-scan"

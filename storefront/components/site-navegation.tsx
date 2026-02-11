@@ -53,8 +53,8 @@ const SiteNavegation = ({ openMenu }: { openMenu: boolean }) => {
                                 }
                             }
                         }} className="overflow-hidden">
-                            <Link href={href} className=" block cursor-default">
-                                <span className="text-6xl uppercase">{label}</span>
+                            <Link href={href} className=" block cursor">
+                                <span className="text-9xl uppercase font-pixel">{label}</span>
                             </Link>
                         </motion.li>
                     </div>
