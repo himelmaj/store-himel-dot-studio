@@ -13,8 +13,8 @@ export const env = createEnv({
 
     server: {
         REVALIDATE_SECRET: z.string().min(1),
-        MEDUSA_CLOUD_S3_HOSTNAME: z.string().min(1),
-        MEDUSA_CLOUD_S3_PATHNAME: z.string().min(1)
+        // MEDUSA_CLOUD_S3_HOSTNAME: z.string().min(1),
+        // MEDUSA_CLOUD_S3_PATHNAME: z.string().min(1)
     },
 
     shared: {
@@ -31,8 +31,8 @@ export const env = createEnv({
         NEXT_PUBLIC_MEDUSA_PAYMENTS_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_MEDUSA_PAYMENTS_PUBLISHABLE_KEY,
         NEXT_PUBLIC_MEDUSA_PAYMENTS_ACCOUNT_ID: process.env.NEXT_PUBLIC_MEDUSA_PAYMENTS_ACCOUNT_ID,
         REVALIDATE_SECRET: process.env.REVALIDATE_SECRET,
-        MEDUSA_CLOUD_S3_HOSTNAME: process.env.MEDUSA_CLOUD_S3_HOSTNAME,
-        MEDUSA_CLOUD_S3_PATHNAME: process.env.MEDUSA_CLOUD_S3_PATHNAME,
+        // MEDUSA_CLOUD_S3_HOSTNAME: process.env.MEDUSA_CLOUD_S3_HOSTNAME,
+        // MEDUSA_CLOUD_S3_PATHNAME: process.env.MEDUSA_CLOUD_S3_PATHNAME,
         NODE_ENV: process.env.NODE_ENV
     }
 })
