@@ -5,6 +5,15 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+    async redirects() {
+        return [
+            {
+                source: '/product',
+                destination: '/',
+                permanent: true,
+            },
+        ]
+    },
     reactStrictMode: true,
     images: {
         remotePatterns: [
@@ -26,7 +35,7 @@ const nextConfig: NextConfig = {
             }
         ],
         dangerouslyAllowLocalIP: env.NODE_ENV === 'development'
-    }
+    },
 
 };
 

@@ -13,7 +13,7 @@ export const getAuthHeaders = async (): Promise<
     if (!token) return
     return { authorization: `Bearer ${token}` }
   } catch {
-    return 
+    return
   }
 }
 
@@ -37,13 +37,13 @@ export const getCacheOptions = async (
   tag: string
 ): Promise<{ tags: string[] } | undefined> => {
   if (typeof window !== "undefined") {
-    return 
+    return
   }
 
   const cacheTag = await getCacheTag(tag)
 
   if (!cacheTag) {
-    return 
+    return
   }
 
   return { tags: [`${cacheTag}`] }
@@ -89,16 +89,27 @@ export const removeCartId = async () => {
 }
 
 export const setLocale = async (locale: string) => {
-    const cookies_ = await nextCookies()
-    cookies_.set(NEXT_LOCALE_NAME, locale, { maxAge: NEXT_LOCALE_MAX_AGE})
-} 
+  const cookies_ = await nextCookies()
+  cookies_.set(NEXT_LOCALE_NAME, locale, { maxAge: NEXT_LOCALE_MAX_AGE })
+}
 
 export const getLocaleHeader = async () => {
-    try {
-        const cookies_ = await nextCookies()
-        const locale = cookies_.get(NEXT_LOCALE_NAME)?.value
-        return { "x-medusa-locale": locale }
-    } catch {
-        {}
-    }
+  try {
+    const cookies_ = await nextCookies()
+    const locale = cookies_.get(NEXT_LOCALE_NAME)?.value
+    return { "x-medusa-locale": locale }
+  } catch {
+    { }
+  }
+}
+
+export const setRegion = async (regionId: string) => {
+  try {
+    const cookies_ = await nextCookies()
+    cookies_.set('region_id', regionId, {
+      maxAge: 60 * 60 * 24 * 365,
+    })
+  } catch {
+    { }
+  }
 }

@@ -89,7 +89,9 @@ export const listProducts = async ({
 
 
 // export const getProducts = async ({ page, region }: { page: number, region: HttpTypes.StoreRegion }):
-export const getProducts = async ({ region }: { page: number, region: HttpTypes.StoreRegion }):
+export const getProducts = async (
+  // { region }: { page: number, region: HttpTypes.StoreRegion }
+):
 
   Promise<{
     products: HttpTypes.StoreProduct[]; count: number, offset: number, limit: number
@@ -103,9 +105,11 @@ export const getProducts = async ({ region }: { page: number, region: HttpTypes.
 
   // console.log(await getLocaleHeader())
 
+  // console.log("region_id", region?.id)
+
   const { products, count, offset, limit } = await medusa.store.product.list({
     fields: "id,title,handle,thumbnail,metadata,images,*variants.calculated_price",
-    region_id: region?.id,
+    // region_id: region?.id,
   }, headers)
 
   const {} = await medusa.client.fetch<{products: HttpTypes.StoreProduct[]; count: number; offset: number; limit: number}>('/store/products', {

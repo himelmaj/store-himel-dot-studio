@@ -50,18 +50,20 @@ const StorePage = async (props: Params) => {
 
     const pageNumber = page ? parseInt(page) : 1
 
-    const region = await getRegion("es")
+    // const region = await getRegion("es")
 
-    console.log(region)
+    // console.log("store page region", region)
 
-    if (!region) {
-		console.log("error region")
-        return null
-    }
+    // if (!region) {
+	// 	console.log("error region")
+    //     return null
+    // }
 
-    const { products } = await getProducts({ page: pageNumber, region: region })
+    const { products } = await getProducts(
+        // { page: pageNumber, region: region }
+    )
 
-	console.log(products)
+	// console.log(products)
 
     return (
         <main className="relative flex h-screen w-screen flex-col flex-nowrap overflow-x-hidden overflow-y-auto scroll-smooth">
